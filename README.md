@@ -23,7 +23,7 @@ Now go dig for some [shaders](https://www.shadertoy.com/results?query=filter) an
 - cubemap example
 
 
-## Examples
+## References
 - Input - Keyboard    : https://www.shadertoy.com/view/lsXGzf
 - Input - Microphone  : https://www.shadertoy.com/view/llSGDh
 - Input - Mouse       : https://www.shadertoy.com/view/Mss3zH
