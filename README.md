@@ -3,20 +3,20 @@ Get GLSL code from Shadertoy.com to run inside of Processing
 
 ![screenshot](https://github.com/SableRaf/Shadertoy2Processing/blob/master/screenshots/001.png)
 
-\
+
 ## How to
 
 Copy the code from Shadertoy shader and paste it...
 
-`// ------------------------------\  
-//  SHADERTOY CODE BEGINS HERE  -\  
-// ------------------------------`
+`// ------------------------------`
+`//  SHADERTOY CODE BEGINS HERE  -`
+`// ------------------------------`
 
 ☝🏻Here
 
-`// ----------------------------\  
-//  SHADERTOY CODE ENDS HERE  -\  
-// ----------------------------`
+`// ----------------------------`
+`//  SHADERTOY CODE ENDS HERE  -`
+`// ----------------------------`
 
 ## To Do
 - Keyboard input
