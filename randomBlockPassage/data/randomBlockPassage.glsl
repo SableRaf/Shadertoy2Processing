@@ -32,7 +32,6 @@ uniform vec4      iDate;                 // (year, month, day, time in seconds)
 // uniform float     iChannelTime[1..4];       // channel playback time (in seconds)
 // uniform vec3      iChannelResolution[1..4]; // channel resolution (in pixels)
 
-
 uniform sampler2D iChannel0;
 uniform sampler2D iChannel1;
 uniform sampler2D iChannel2;

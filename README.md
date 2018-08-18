@@ -3,10 +3,19 @@ Get GLSL code from Shadertoy.com to run inside of Processing
 
 ![screenshot](https://github.com/SableRaf/Shadertoy2Processing/blob/master/screenshots/001.png)
 
+## How to
+
+Copy the code from any Shadertoy shader and paste in the shader file where it says:
+
+`// ------------------------------
+//  SHADERTOY CODE BEGINS HERE  -
+// ------------------------------`
+
 ## To Do
 - Keyboard input
 - Sound input
 - cubemap example
+- Support multipass shaders
 
 
 ## References
