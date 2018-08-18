@@ -22,8 +22,6 @@ Get GLSL code from Shadertoy.com to run inside of Processing
 
 ## Other Shadertoy ports
 
-ShadersForProcessing3 by George Rowe
-https://github.com/georgehenryrowe/ShadersForProcessing3
+[ShadersForProcessing3](https://github.com/georgehenryrowe/ShadersForProcessing3) by George Rowe
 
-Filters4Processing by... me?
-https://github.com/SableRaf/Filters4Processing
+[Filters4Processing](https://github.com/SableRaf/Filters4Processing) by... me?
