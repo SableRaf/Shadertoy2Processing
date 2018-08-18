@@ -48,9 +48,6 @@ uniform vec3  iChannelResolution[4]; // channel resolution (in pixels)
 uniform float iChannelTime[4]; // Channel playback time (in seconds)
 */
 
-vec4 fragColor;
-vec2 fragCoord = gl_FragCoord.xy;
-
 void mainImage( out vec4 fragColor, in vec2 fragCoord );
 
 void main() {
