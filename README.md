@@ -1,7 +1,10 @@
 # Shadertoy2Processing
 Get GLSL code from Shadertoy.com to run inside of Processing
 
-## How to
+![screenshot](https://github.com/SableRaf/Shadertoy2Processing/blob/master/screenshots/001.png)
+
+
+## How to import a shader
 
 Copy the code from Shadertoy shader and paste it...
 
