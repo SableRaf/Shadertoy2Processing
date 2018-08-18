@@ -34,12 +34,11 @@ uniform vec4      iDate;                 // (year, month, day, time in seconds)
 
 
 uniform sampler2D iChannel0;
-
-/*
 uniform sampler2D iChannel1;
 uniform sampler2D iChannel2;
 uniform sampler2D iChannel3;
 
+/*
 uniform samplerCube iChannel0;
 uniform samplerCube iChannel1;
 uniform samplerCube iChannel2;
