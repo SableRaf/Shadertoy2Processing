@@ -8,14 +8,14 @@ Get GLSL code from Shadertoy.com to run inside of Processing
 
 Copy the code from Shadertoy shader and paste it...
 
-`// ------------------------------`
-`//  SHADERTOY CODE BEGINS HERE  -`
+`// ------------------------------`  
+`//  SHADERTOY CODE BEGINS HERE  -`  
 `// ------------------------------`
 
 ☝🏻Here
 
-`// ----------------------------`
-`//  SHADERTOY CODE ENDS HERE  -`
+`// ----------------------------`  
+`//  SHADERTOY CODE ENDS HERE  -`  
 `// ----------------------------`
 
 ## To Do
