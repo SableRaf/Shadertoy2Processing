@@ -4,7 +4,6 @@ Get GLSL code from Shadertoy.com to run inside of Processing
 ![screenshot](https://github.com/SableRaf/Shadertoy2Processing/blob/master/screenshots/001.png)
 
 ## To Do
-- iChannelXX support
 - Keyboard input
 - Sound input
 - cubemap example
