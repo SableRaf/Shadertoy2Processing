@@ -51,13 +51,18 @@ uniform float iChannelTime[4]; // Channel playback time (in seconds)
 vec4 fragColor;
 vec2 fragCoord = gl_FragCoord.xy;
 
+void mainImage( out vec4 fragColor, in vec2 fragCoord );
+
+void main() {
+    mainImage(gl_FragColor,gl_FragCoord.xy);
+}
+
 // ------------------------------
 //  SHADERTOY CODE BEGINS HERE  -
 // ------------------------------
 
-// FOR PROCESSING: REPLACE 'void mainImage(...)' WITH 'void main(void)'
-// void mainImage( out vec4 fragColor, in vec2 fragCoord )
-void main(void)
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+//void main(void)
 {
     // Normalized pixel coordinates (from 0 to 1)
     vec2 uv = fragCoord/iResolution.xy;
@@ -67,9 +72,6 @@ void main(void)
 
     // Output to screen
     fragColor = vec4(col,1.0);
-
-		// FOR PROCESSING: ADD THIS LINE AT THE END OF THE mainImage() FUNCTION
-		gl_FragColor = fragColor;
 }
 
 // ----------------------------
