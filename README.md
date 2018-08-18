@@ -8,15 +8,15 @@ Get GLSL code from Shadertoy.com to run inside of Processing
 
 Copy the code from Shadertoy shader and paste it...
 
-`// ------------------------------`  
+`// ------------------------------`
 `//  SHADERTOY CODE BEGINS HERE  -`  
 `// ------------------------------`
 
 ☝🏻Here
 
-`// ----------------------------`  
-`//  SHADERTOY CODE ENDS HERE  -`  
-`// ----------------------------`
+`// ---------------------------- </br>  
+//  SHADERTOY CODE ENDS HERE  - </br>  
+// ----------------------------`
 
 ## To Do
 - Keyboard input
