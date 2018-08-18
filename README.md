@@ -14,3 +14,21 @@ Shadertoy and Processing both have their own quirks when it comes to shader prog
 There is more to it, but these tips should cover the most basic shaders.
 
 Now go dig for some [shaders](https://www.shadertoy.com/results?query=filter) and help us extend the library of shaders available for Processing!
+
+
+## To Do
+- iChannelXX support
+- Keyboard input
+- Sound input
+- cubemap example
+
+
+## Examples
+Input - Keyboard    : https://www.shadertoy.com/view/lsXGzf
+Input - Microphone  : https://www.shadertoy.com/view/llSGDh
+Input - Mouse       : https://www.shadertoy.com/view/Mss3zH
+Input - Sound       : https://www.shadertoy.com/view/Xds3Rr
+Input - SoundCloud  : https://www.shadertoy.com/view/MsdGzn
+Input - Time        : https://www.shadertoy.com/view/lsXGz8
+Input - TimeDelta   : https://www.shadertoy.com/view/lsKGWV
+Input - 3D Texture  : https://www.shadertoy.com/view/4llcR4

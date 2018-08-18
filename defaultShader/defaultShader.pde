@@ -1,23 +1,3 @@
-
-/* 
-TO DO:
-- Keyboard input
-- Sound input
-
-DOCUMENTATION:
-// Input - Keyboard    : https://www.shadertoy.com/view/lsXGzf
-// Input - Microphone  : https://www.shadertoy.com/view/llSGDh
-// Input - Mouse       : https://www.shadertoy.com/view/Mss3zH
-// Input - Sound       : https://www.shadertoy.com/view/Xds3Rr
-// Input - SoundCloud  : https://www.shadertoy.com/view/MsdGzn
-// Input - Time        : https://www.shadertoy.com/view/lsXGz8
-// Input - TimeDelta   : https://www.shadertoy.com/view/lsKGWV
-// Input - 3D Texture  : https://www.shadertoy.com/view/4llcR4
-
-NOTES:
-
-*/
-
 PShader myShader;
 
 // uniform float     iChannelTime[4];       // channel playback time (in seconds)
