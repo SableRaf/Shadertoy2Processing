@@ -57,8 +57,6 @@ void draw() {
 
   // This uniform is undocumented so I have no idea what the range is
   myShader.set("iFrameRate", frameRate);
-  
-  println(frameRate);
 
   // Apply the specified shader to any geometry drawn from this point  
   shader(myShader);
