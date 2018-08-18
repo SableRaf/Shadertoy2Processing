@@ -1,6 +1,8 @@
 # Shadertoy2Processing
 Get GLSL code from Shadertoy.com to run inside of Processing
 
+![screenshot](https://github.com/SableRaf/Shadertoy2Processing/blob/master/screenshots/001.jpg)
+
 ## Porting GLSL code from Shadertoy
 
 Shadertoy and Processing both have their own quirks when it comes to shader programming. We need to make some changes in order to make Shadertoy code work with Processing.
