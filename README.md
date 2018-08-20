@@ -39,4 +39,6 @@ Copy the code from Shadertoy shader and paste it...
 
 [ShadersForProcessing3](https://github.com/georgehenryrowe/ShadersForProcessing3) by George Rowe
 
+[The Shadertoy ports](https://github.com/diwi/PixelFlow/tree/master/examples/Shadertoy) inside of Thomas Diewald's PixelFlow library.
+
 [Filters4Processing](https://github.com/SableRaf/Filters4Processing) by... me?
