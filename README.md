@@ -42,3 +42,5 @@ Copy the code from Shadertoy shader and paste it...
 [The Shadertoy ports](https://github.com/diwi/PixelFlow/tree/master/examples/Shadertoy) inside of Thomas Diewald's PixelFlow library.
 
 [Filters4Processing](https://github.com/SableRaf/Filters4Processing) by... me?
+
+[PShaderToy](https://github.com/n1ckfg/PShaderToy) by Nick Fox-Gieg
