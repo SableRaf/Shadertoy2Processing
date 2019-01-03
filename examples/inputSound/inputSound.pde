@@ -64,11 +64,16 @@ void draw() {
   audioDataTexture.noFill();
   for (int i = 0; i < bands; i++) {
     for (int j = 0; j < 2; j++) {
-      float colorValueFromAudio = fft.spectrum[i];
-      audioDataTexture.stroke(colorValueFromAudio);
+      float colorValueFromFFT = fft.spectrum[i];
       audioDataTexture.pushMatrix();
       audioDataTexture.translate(i,0);
-      audioDataTexture.line(0,0,0,1);
+      
+      audioDataTexture.stroke(colorValueFromFFT,0,0); // fft
+      audioDataTexture.point(0,0);
+      
+      audioDataTexture.stroke(0.7,0,0); // waveform
+      audioDataTexture.point(0,1);
+      
       audioDataTexture.popMatrix();
     }
   }
