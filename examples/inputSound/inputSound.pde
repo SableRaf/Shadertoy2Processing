@@ -4,12 +4,16 @@ import processing.sound.*;
 
 SoundFile soundfile;
 FFT fft;
+Waveform waveform;
 AudioDevice device;
 
 PGraphics audioDataTexture;
 
 // Define how many FFT bands we want
 int bands = 512;
+
+// Define how many samples of the Waveform you want to be able to read at once
+int samples = 512;
 
 PShader myShader;
 
@@ -52,11 +56,17 @@ void setup() {
   // Create and patch the FFT analyzer
   fft = new FFT(this, bands);
   fft.input(soundfile);
+  
+  // Create the Waveform analyzer and connect the playing soundfile to it.
+  waveform = new Waveform(this, samples);
+  waveform.input(soundfile);
 }
 
 
 void draw() {
   
+  // Perform the analysis
+  waveform.analyze();
   fft.analyze();
   
   audioDataTexture.beginDraw();
@@ -65,13 +75,14 @@ void draw() {
   for (int i = 0; i < bands; i++) {
     for (int j = 0; j < 2; j++) {
       float colorValueFromFFT = fft.spectrum[i];
+      float colorValueFromWaveform = waveform.data[i];
       audioDataTexture.pushMatrix();
       audioDataTexture.translate(i,0);
       
       audioDataTexture.stroke(colorValueFromFFT,0,0); // fft
       audioDataTexture.point(0,0);
       
-      audioDataTexture.stroke(0.7,0,0); // waveform
+      audioDataTexture.stroke(colorValueFromWaveform,0,0); // waveform
       audioDataTexture.point(0,1);
       
       audioDataTexture.popMatrix();
