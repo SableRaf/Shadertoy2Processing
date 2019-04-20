@@ -5,7 +5,6 @@ import processing.sound.*;
 SoundFile soundfile;
 FFT fft;
 Waveform waveform;
-AudioDevice device;
 
 PGraphics audioDataTexture;
 
@@ -37,10 +36,6 @@ void setup() {
   //Load a soundfile
   soundfile = new SoundFile(this, "beat.aiff");
 
-  // If the Buffersize is larger than the FFT Size, the FFT will fail
-  // so we set Buffersize equal to bands
-  device = new AudioDevice(this, 23000, bands);
-
   // Load the shader file from the "data" folder
   myShader = loadShader("input_sound.glsl");
 
@@ -70,23 +65,23 @@ void draw() {
   fft.analyze();
   
   audioDataTexture.beginDraw();
+  //audioDataTexture.background(0);
   audioDataTexture.colorMode(RGB,1.0);
   audioDataTexture.noFill();
   for (int i = 0; i < bands; i++) {
-    for (int j = 0; j < 2; j++) {
       float colorValueFromFFT = fft.spectrum[i];
       float colorValueFromWaveform = waveform.data[i];
-      audioDataTexture.pushMatrix();
-      audioDataTexture.translate(i,0);
       
-      audioDataTexture.stroke(colorValueFromFFT,0,0); // fft
-      audioDataTexture.point(0,0);
+      audioDataTexture.loadPixels();
       
-      audioDataTexture.stroke(colorValueFromWaveform,0,0); // waveform
-      audioDataTexture.point(0,1);
+      audioDataTexture.stroke(colorValueFromFFT,colorValueFromFFT,colorValueFromFFT); // fft
+      audioDataTexture.pixels[i] = color(colorValueFromFFT*255,0,0);
       
-      audioDataTexture.popMatrix();
-    }
+      audioDataTexture.stroke(colorValueFromWaveform,colorValueFromWaveform,colorValueFromWaveform); // waveform
+      audioDataTexture.pixels[i+512] = color(colorValueFromWaveform*255,0,0);
+      
+      audioDataTexture.updatePixels();
+
   }
   audioDataTexture.endDraw();
   
