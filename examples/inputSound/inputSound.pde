@@ -5,8 +5,9 @@ import processing.sound.*;
 SoundFile soundfile;
 FFT fft;
 Waveform waveform;
+float fftScale = 15;
 
-PGraphics audioDataTexture;
+PImage audioDataTexture;
 
 // Define how many FFT bands we want
 int bands = 512;
@@ -64,27 +65,13 @@ void draw() {
   waveform.analyze();
   fft.analyze();
   
-  audioDataTexture.beginDraw();
-  //audioDataTexture.background(0);
-  audioDataTexture.colorMode(RGB,1.0);
-  audioDataTexture.noFill();
-  for (int i = 0; i < bands; i++) {
-      float colorValueFromFFT = fft.spectrum[i];
-      float colorValueFromWaveform = waveform.data[i];
-      
-      audioDataTexture.loadPixels();
-      
-      audioDataTexture.stroke(colorValueFromFFT,colorValueFromFFT,colorValueFromFFT); // fft
-      audioDataTexture.pixels[i] = color(colorValueFromFFT*255,0,0);
-      
-      audioDataTexture.stroke(colorValueFromWaveform,colorValueFromWaveform,colorValueFromWaveform); // waveform
-      audioDataTexture.pixels[i+512] = color(colorValueFromWaveform*255,0,0);
-      
-      audioDataTexture.updatePixels();
-
+  audioDataTexture.loadPixels();
+  for (int i = 0; i < bands; i++) {      
+      audioDataTexture.pixels[i] = (int)constrain(128 + 127 * waveform.data[i], 0, 255) << 16;
+      audioDataTexture.pixels[i+audioDataTexture.width] = (int)constrain(fft.spectrum[i] * 255 * fftScale, 0, 255) << 16;     
   }
-  audioDataTexture.endDraw();
-  
+  audioDataTexture.updatePixels();
+
   myShader.set("iChannel0", audioDataTexture);
 
   // shader playback time (in seconds)
