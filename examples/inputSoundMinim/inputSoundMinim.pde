@@ -33,7 +33,7 @@ float mouseClickState = 0.0;
 void setup() {
   size(640, 360, P2D);
   
-  audioDataTexture = createGraphics(512,2,P2D);
+  audioDataTexture = createImage(bands, 2, ARGB);
 
   minim = new Minim(this);
   
@@ -64,9 +64,9 @@ void draw() {
   audioDataTexture.loadPixels();
   for (int i = 0; i < bands; i++) {      
       audioDataTexture.pixels[i] = 
-        (int)constrain(128 + 127 * soundfile.mix.get(i), 0, 255) << 16;
-      audioDataTexture.pixels[i+audioDataTexture.width] = 
         (int)constrain(fft.getBand(i) * fftScale, 0, 255) << 16;     
+      audioDataTexture.pixels[i+audioDataTexture.width] = 
+        (int)constrain(128 + 127 * soundfile.mix.get(i), 0, 255) << 16;
   }
   audioDataTexture.updatePixels();
 
