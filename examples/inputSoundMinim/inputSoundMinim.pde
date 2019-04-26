@@ -1,11 +1,12 @@
 // https://www.shadertoy.com/view/Xds3Rr
 
-import processing.sound.*;
+import ddf.minim.analysis.*;
+import ddf.minim.*;
 
-SoundFile soundfile;
+Minim minim;
+AudioPlayer soundfile;
 FFT fft;
-Waveform waveform;
-float fftScale = 15;
+float fftScale = 5;
 
 PImage audioDataTexture;
 
@@ -34,8 +35,10 @@ void setup() {
   
   audioDataTexture = createGraphics(512,2,P2D);
 
+  minim = new Minim(this);
+  
   //Load a soundfile
-  soundfile = new SoundFile(this, "beat.aiff");
+  soundfile = minim.loadFile("../inputSound/data/beat.aiff", 1024);
 
   // Load the shader file from the "data" folder
   myShader = loadShader("input_sound.glsl");
@@ -50,25 +53,20 @@ void setup() {
   soundfile.loop();
   
   // Create and patch the FFT analyzer
-  fft = new FFT(this, bands);
-  fft.input(soundfile);
-  
-  // Create the Waveform analyzer and connect the playing soundfile to it.
-  waveform = new Waveform(this, samples);
-  waveform.input(soundfile);
+  fft = new FFT( soundfile.bufferSize(), soundfile.sampleRate() );
 }
-
 
 void draw() {
   
   // Perform the analysis
-  waveform.analyze();
-  fft.analyze();
+  fft.forward(soundfile.mix);
   
   audioDataTexture.loadPixels();
   for (int i = 0; i < bands; i++) {      
-      audioDataTexture.pixels[i] = (int)constrain(128 + 127 * waveform.data[i], 0, 255) << 16;
-      audioDataTexture.pixels[i+audioDataTexture.width] = (int)constrain(fft.spectrum[i] * 255 * fftScale, 0, 255) << 16;     
+      audioDataTexture.pixels[i] = 
+        (int)constrain(128 + 127 * soundfile.mix.get(i), 0, 255) << 16;
+      audioDataTexture.pixels[i+audioDataTexture.width] = 
+        (int)constrain(fft.getBand(i) * fftScale, 0, 255) << 16;     
   }
   audioDataTexture.updatePixels();
 
