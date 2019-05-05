@@ -1,6 +1,3 @@
-// https://www.shadertoy.com/view/Xds3Rr
-
-import processing.sound.*;
 
 PImage keyboardTexture;
 
