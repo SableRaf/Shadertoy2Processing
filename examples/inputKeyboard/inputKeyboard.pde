@@ -1,20 +1,8 @@
 // https://www.shadertoy.com/view/Xds3Rr
 
-import ddf.minim.analysis.*;
-import ddf.minim.*;
+import processing.sound.*;
 
-Minim minim;
-AudioPlayer soundfile;
-FFT fft;
-float fftScale = 5;
-
-PImage audioDataTexture;
-
-// Define how many FFT bands we want
-int bands = 512;
-
-// Define how many samples of the Waveform you want to be able to read at once
-int samples = 512;
+PImage keyboardTexture;
 
 PShader myShader;
 
@@ -32,45 +20,24 @@ float mouseClickState = 0.0;
 
 void setup() {
   size(640, 360, P2D);
-  
-  audioDataTexture = createImage(bands, 2, ARGB);
 
-  minim = new Minim(this);
-  
-  //Load a soundfile
-  soundfile = minim.loadFile("../inputSound/data/beat.aiff", 1024);
+  keyboardTexture = createImage(256, 1, ARGB);
 
   // Load the shader file from the "data" folder
-  myShader = loadShader("input_sound.glsl");
+  myShader = loadShader("input_keyboard.glsl");
 
   // We assume the dimension of the window will not change over time,
   // therefore we can pass its values in the setup() function
   myShader.set("iResolution", float(width), float(height), 0.0);
 
-  lastMousePosition = new PVector(float(mouseX),float(mouseY));
-
-  // Play the file in a loop
-  soundfile.loop();
-  
-  // Create and patch the FFT analyzer
-  fft = new FFT( soundfile.bufferSize(), soundfile.sampleRate() );
+  lastMousePosition = new PVector(float(mouseX), float(mouseY));
 }
 
-void draw() {
-  
-  // Perform the analysis
-  fft.forward(soundfile.mix);
-  
-  audioDataTexture.loadPixels();
-  for (int i = 0; i < bands; i++) {      
-      audioDataTexture.pixels[i] = 
-        (int)constrain(fft.getBand(i) * fftScale, 0, 255) << 16;     
-      audioDataTexture.pixels[i+audioDataTexture.width] = 
-        (int)constrain(128 + 127 * soundfile.mix.get(i), 0, 255) << 16;
-  }
-  audioDataTexture.updatePixels();
 
-  myShader.set("iChannel0", audioDataTexture);
+void draw() {
+  myShader.set("iResolution", float(width), float(height), 0.0);
+
+  myShader.set("iChannel0", keyboardTexture);
 
   // shader playback time (in seconds)
   float currentTime = millis()/1000.0;
@@ -85,8 +52,8 @@ void draw() {
   myShader.set("iFrame", frameCount);
 
   // mouse pixel coords. xy: current (if MLB down), zw: click
-  if(mousePressed) {
-    lastMousePosition.set(float(mouseX),float(mouseY));
+  if (mousePressed) {
+    lastMousePosition.set(float(mouseX), float(mouseY));
     mouseClickState = 1.0;
   } else {
     mouseClickState = 0.0;
@@ -107,9 +74,20 @@ void draw() {
 
   // Draw the output of the shader onto a rectangle that covers the whole viewport.
   rect(0, 0, width, height);
-
+  line(0, 0, width, height);
   resetShader();
-  
-  //image(audioDataTexture,0,0,width,height);
 
+  //image(audioDataTexture,0,0,width,height);
+}
+
+void keyPressed(KeyEvent ev) {
+  keyboardTexture.loadPixels();
+  keyboardTexture.pixels[ev.getKey() == CODED ? ev.getKeyCode() : ev.getKey()] = 0xFFFFFF;
+  keyboardTexture.updatePixels();
+}
+
+void keyReleased(KeyEvent ev) {
+  keyboardTexture.loadPixels();
+  keyboardTexture.pixels[ev.getKey() == CODED ? ev.getKeyCode() : ev.getKey()] = 0;
+  keyboardTexture.updatePixels();
 }
