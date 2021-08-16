@@ -12,7 +12,7 @@ Copy the code from Shadertoy shader and paste it...
 `//  SHADERTOY CODE BEGINS HERE  -`  
 `// ------------------------------`
 
-☝🏻Here
+👉🏻 Here
 
 `// ----------------------------`  
 `//  SHADERTOY CODE ENDS HERE  -`  
